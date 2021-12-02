@@ -1,0 +1,26 @@
+<nav class="nav">
+    <ul id="menu-list">
+        <li matRipple id="search-button"><span data-page-name="Buscar" class="menu-button"><i class="mdi mdi-magnify"></i></span></li>
+        <li matRipple routerLinkActive="active"><a routerLink="/home" data-page-name="Inicio" class="menu-button"><i class="mdi mdi-home-variant-outline"></i></a></li>
+        <li matRipple routerLinkActive="active"><a routerLink="/panel/dashboard" data-page-name="Panel" class="menu-button"><i class="mdi mdi-view-dashboard-outline"></i></a></li>
+    </ul>
+    <ul id="account-list">
+        <li class="my-account" matRipple [matMenuTriggerFor]="menu" matTooltip="Mi cuenta" matTooltipPosition="left">
+            <div class="user-image" [ngStyle]="{'background-image': urlImg }"></div>
+        </li>
+    </ul>
+    <mat-menu #menu="matMenu" class="custom">
+        <a *ngIf="_authsrv.activeUser" mat-menu-item routerLink="/panel/settings">
+            <mat-icon svgIcon="cog-outline"></mat-icon>
+            <span>Configuración</span>
+        </a>
+        <button *ngIf="_authsrv.activeUser" mat-menu-item color="red" (click)="_authsrv.logout()">
+            <mat-icon svgIcon="logout-variant"></mat-icon>
+            <span>Cerrar sesión</span>
+        </button>
+        <button *ngIf="!_authsrv.activeUser" mat-menu-item appSpotilogin>
+            <mat-icon svgIcon="spotify"></mat-icon>
+            <span>Entrar con Spotify</span>
+        </button>
+    </mat-menu>
+</nav>

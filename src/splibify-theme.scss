@@ -1,0 +1,46 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+/******************************
+**  Define la paleta de colores
+**/
+
+$splibify-primary: mat-palette($mat-blue-grey);
+$splibify-accent: mat-palette($mat-green, A200, A100, A400);
+$splibify-warn: mat-palette($mat-red);
+$splibify-notif-theme: ( default: #fff, info: mat-color(mat-palette($mat-blue), 400), success: mat-color(mat-palette($mat-green), 400), warning: mat-color(mat-palette($mat-yellow), 400), error: mat-color(mat-palette($mat-red), 400), );
+
+/******************************
+**  Setea la paleta de colores
+**/
+
+$splibify-theme: mat-light-theme($splibify-primary, $splibify-accent, $splibify-warn);
+
+/******************************
+**  Estilos customizados de los componentes
+**/
+
+@import "./app/splibify-theme/dialog.component-theme.scss";
+@import "./app/splibify-theme/snackbar.component-theme.scss";
+@import "./app/splibify-theme/menu.component-theme.scss";
+@import "./app/splibify-theme/card.component-theme.scss";
+@mixin custom-components-theme($theme, $splibify-notif-theme) {
+    @include dialog-component-theme($theme);
+    @include snackbar-component-theme($splibify-notif-theme);
+    @include menu-component-theme($splibify-notif-theme);
+    @include card-component-theme($splibify-notif-theme);
+}
+
+
+/**
+**  Carga el tema customizado
+**/
+
+@include angular-material-theme($splibify-theme);
+@include custom-components-theme($splibify-theme, $splibify-notif-theme);

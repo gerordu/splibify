@@ -1,0 +1,27 @@
+@import "~@angular/material/theming";
+@mixin menu-component-theme($theme) {
+    // retrieve variables from theme
+    // (all possible variables, use only what you really need)
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $error: map-get($theme, error);
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    .mat-menu-panel.custom {
+        border-radius: 10px;
+        .mat-menu-content {
+            padding: 8px;
+            .mat-menu-item {
+                border-radius: 10px;
+                padding: 0 20px;
+                &[color="red"] {
+                    color: $error;
+                    .mat-icon {
+                        color: $error;
+                    }
+                }
+            }
+        }
+    }
+}

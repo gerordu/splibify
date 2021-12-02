@@ -1,0 +1,76 @@
+<div class="carousel">
+    <div class="title-bar">
+        <span class="title">Mis Playlists</span>
+        <div class="actions">
+            <a href="" mat-button color="accent">Ver todas</a>
+        </div>
+    </div>
+    <button class="control left-control"></button>
+    <button class="control right-control"></button>
+    <ul class="list">
+        <li class="item">
+            <a href="">s</a>
+        </li>
+        <li class="item">
+            <a href="">s</a>
+        </li>
+        <li class="item">
+            <a href="">s</a>
+        </li>
+        <li class="item">
+            <a href="">s</a>
+        </li>
+        <li class="item">
+            <a href="">s</a>
+        </li>
+        <li class="item">
+            <a href="">s</a>
+        </li>
+        <li class="item">
+            <a href="">s</a>
+        </li>
+        <li class="item add">
+            <a href="">d</a>
+        </li>
+    </ul>
+</div>
+
+<table mat-table [dataSource]="data" style="width: 100%;">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="result_number">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let i = index"> {{i + 1}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element"> <img src="{{element.images[0].url}}" /> </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="visibility">
+        <th mat-header-cell *matHeaderCellDef>Publica/Privada</th>
+        <td mat-cell *matCellDef="let element"> {{element.public ? 'Pública' : 'Privada'}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="contains">
+        <th mat-header-cell *matHeaderCellDef>Canciones</th>
+        <td mat-cell *matCellDef="let element"> {{element.tracks.total}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ver</th>
+        <td mat-cell *matCellDef="let element">
+            <a href="{{element.href}}">Ver en spotify</a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

@@ -1,0 +1,97 @@
+.nav {
+    height: 70px;
+    width: 100%;
+    background-color: #161616;
+    margin-bottom: 15px;
+}
+
+.nav ul {
+    float: left;
+}
+
+.nav>#account-list {
+    width: 80px;
+    height: 100%;
+}
+
+.nav>#account-list .my-account {
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav>#account-list .my-account .user-image {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-color: #202020;
+    border-radius: 50%;
+    background-image: url('../../../../assets/img/user.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.nav>#menu-list {
+    width: calc(100% - 80px);
+    height: 70px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    list-style-type: none;
+}
+
+.nav>#menu-list li {
+    display: inline-block;
+}
+
+.nav>#menu-list li .menu-button {
+    display: inline-block;
+    padding: 22px 28px;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav>#menu-list li .menu-button::after {
+    content: attr(data-page-name);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 82px;
+    height: 10px;
+    color: #FFF;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(0px);
+    transition: all 0.2s ease-out;
+}
+
+.nav>#menu-list li .menu-button:hover::after,
+.nav>#menu-list li.active .menu-button::after {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-20px);
+}
+
+.nav>#menu-list li .menu-button i:before {
+    vertical-align: middle;
+    color: #FFF;
+    font-size: 26px;
+    transition: all 0.2s ease-out;
+}
+
+.nav>#menu-list li.active .menu-button::after,
+.nav>#menu-list li.active .menu-button i:before {
+    color: var(--main_accent_color);
+}
+
+.nav>#menu-list li .menu-button:hover i:before,
+.nav>#menu-list li.active .menu-button i:before {
+    transform: translateY(-10px);
+}
